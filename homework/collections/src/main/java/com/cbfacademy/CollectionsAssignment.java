@@ -3,9 +3,14 @@ package com.cbfacademy;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class CollectionsAssignment {
-
     /**
      * This method removes all values from the provided list that are smaller
      * than the indicated integer. The remaining elements retain their original
@@ -15,10 +20,15 @@ public class CollectionsAssignment {
      * @param minValue the minimum value to retain
      */
     public static void removeSmallInts(List<Integer> list, int minValue) {
-        // Your solution must traverse the list from last to first element
+        //Iterate through the list from last to 1st element
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (list.get(i) < minValue) {
+                list.remove(list.get(i));
+            } 
+        }
+        // Your solution must traverse the list from last to first element.
         // removing any values less than minValue.
     }
-
     /**
      * This method returns true if the provided collection contains any
      * duplicate elements.
@@ -28,7 +38,8 @@ public class CollectionsAssignment {
      */
     public static boolean containsDuplicates(Collection<Integer> integers) {
         // Your solution must not use any loops.
-        return false;
+        Set<Integer> uniqueElements = new HashSet<>(integers);
+        return uniqueElements.size() != integers.size();
     }
 
     /**
@@ -48,7 +59,15 @@ public class CollectionsAssignment {
      */
     public static ArrayList<Integer> inEither(Collection<Integer> ints1, Collection<Integer> ints2) {
         // This must be done with no loops.
-        return new ArrayList<Integer>();
+        // create a list to store and organise all elements
+        Set<Integer> noDupeSet = new HashSet<>();
+        noDupeSet.addAll(ints1);
+        noDupeSet.addAll(ints2);
+        // a method to check for duplicates
+        List<Integer> organisedList = new ArrayList<>(noDupeSet);
+        
+       Collections.sort(organisedList);
+        return new ArrayList<>(organisedList);
     }
 
     /**
@@ -66,7 +85,20 @@ public class CollectionsAssignment {
      */
     public static ArrayList<Integer> inBoth(Collection<Integer> ints1, Collection<Integer> ints2) {
         // This must be done with no loops.
-        return new ArrayList<>();
+        // Remove any duplicates
+        Set<Integer> ints1Set = new HashSet<>(ints1);
+        Set<Integer> ints2Set = new HashSet<>(ints2);
+        // Find simillar values from both lists
+        // Set<Integer> commonValues = new HashSet<>(ints1Set);
+        ints1Set.retainAll(ints2Set);
+        // Sort remaning values
+        List<Integer> commonValues = new ArrayList<>(ints1Set);
+        Collections.sort(commonValues);
+
+        return new ArrayList<>(commonValues); 
+        
+
+        
     }
 
     /**
@@ -80,12 +112,28 @@ public class CollectionsAssignment {
      * @return the most frequently occurring String
      */
     public static String mostFrequent(List<String> list) {
+
+        Map<String, Integer> stringCount = new HashMap<>();
         // You should solve this problem in two stages: First iterate through
-        // the list to count occurrences of each String. Then iterate through
-        // your counts to find the largest. You'll need a collection that allows
+        // the list to count occurrences of each String.
+        for (String str : list) {
+            stringCount.put(str, stringCount.getOrDefault(str,0) + 1);
+        } 
+       
+        // Then iterate through your counts to find the largest. You'll need a collection that allows
         // you to store a mapping from Strings to counts.
+        String mostFrequentString = "";
+        int maxCount = 0;
+
         // No nested loops or non-enhanced for-loops are allowed.
-        return "";
+        for (Entry<String, Integer> entry : stringCount.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostFrequentString = entry.getKey();
+                maxCount = entry.getValue();
+
+            }        
+        }
+        return mostFrequentString;
     }
 
     public static String getName() {
