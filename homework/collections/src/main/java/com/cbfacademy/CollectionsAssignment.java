@@ -41,7 +41,6 @@ public class CollectionsAssignment {
         Set<Integer> uniqueElements = new HashSet<>(integers);
         return uniqueElements.size() != integers.size();
     }
-
     /**
      * This method returns an ArrayList containing all elements that appear in
      * either of the two collection arguments. There will be no duplicate values
@@ -51,7 +50,6 @@ public class CollectionsAssignment {
      * For example, if the two arguments contain {2, 1, 2, 3} and {3, 4, 4, 5},
      * the returned ArrayList will contain {1, 2, 3, 4, 5}. The original
      * collections will not be modified.
-     *
      * @param ints1 - the first collection
      * @param ints2 - the second collection
      * @return A sorted ArrayList containing the integers that appear in either

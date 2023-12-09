@@ -66,7 +66,7 @@ public class FlowControlExercises {
         for (int num : numbers) {
             if (num % 2 ==0) {
                 sumOfEvens += num;
-            } else{
+            } else {
                 sumOfOdds += num;
             }
         }
