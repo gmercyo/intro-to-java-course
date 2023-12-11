@@ -1,4 +1,4 @@
-package main.java.com.cbfacademy;
+package com.cbfacademy.words;
 
 public class ReverseCharSequence implements CharSequence {
     private String originalString;
@@ -9,12 +9,12 @@ public class ReverseCharSequence implements CharSequence {
         this.originalString = inputString;
     }
     
-    @override
+    @Override
     public int length() {
         // Getting the length of the string
         return originalString.length();
     }
-    @override
+    @Override
     public char charAt(int index) {
         // Preparing for index out of bounds errors, so if it's less than 0 or more than the length of the string we're dealing with.
         if (index < 0 || index >= originalString.length()) {
@@ -22,12 +22,12 @@ public class ReverseCharSequence implements CharSequence {
         }
         // This method is to return the char at its specified index in the originalString. 
         
-        // Hint: You can use originalString.charAt(index) to access characters.
-        // Youll need to calculate the correct index for the reversed order.
+        // You can use originalString.charAt(index) to access characters.
+        // You'll need to calculate the correct index for the reversed order.
         return originalString.charAt(originalString.length() - 1 - index);
     }
-    @override 
-    public charSequence subSequence(int start, int end) {
+    @Override 
+    public CharSequence subSequence(int start, int end) {
         if (start < 0 || end < 0 || start > end || end > originalString.length()) {
             throw new IndexOutOfBoundsException("Invalid start or end indices");
         }
@@ -52,9 +52,4 @@ public class ReverseCharSequence implements CharSequence {
         }
         return reversed.toString();
     }
-
-    // public static void main(String[] args) {
-    //     ReverseCharSequence reversed = new ReverseCharSequence("Hello, World!");
-    //     System.out.println(reversed.toString()); // Output: "!dlroW ,olleH"
-    // }
 }
