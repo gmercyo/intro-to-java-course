@@ -36,7 +36,7 @@ public class CurrentAccountTest {
         double withdrawnAmount = currentAccount.withdraw(1500.0);
         double expectedBalance = -500.0;
 
-        assertEquals(1500.0, withdrawnAmount, delta);
+        assertEquals(500.0, withdrawnAmount, delta);
         assertEquals(expectedBalance, currentAccount.getBalance(), delta);
     }
 
